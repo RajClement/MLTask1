@@ -110,27 +110,3 @@ class DataTransformation:
             )
         except Exception as e:
             raise CustomException(e, sys)
-
-# Example usage
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-
-    data_transformation = DataTransformation()
-
-    train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation("train_data.csv", "test_data.csv")
-
-    # Separate features and target
-    X_train, y_train = train_arr[:, :-1], train_arr[:, -1]
-    X_test, y_test = test_arr[:, :-1], test_arr[:, -1]
-
-    # Train the logistic regression model
-    model = LogisticRegression(class_weight='balanced', max_iter=1000)
-    model.fit(X_train, y_train)
-
-    # Predict on the test set
-    y_pred = model.predict(X_test)
-
-    # Evaluate the model
-    print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
-    print(f'Confusion Matrix:\n {confusion_matrix(y_test, y_pred)}')
-    print(f'Classification Report:\n {classification_report(y_test, y_pred)}')     
