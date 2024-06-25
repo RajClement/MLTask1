@@ -5,4 +5,7 @@ matplotlib
 scikit-learn
 catboost
 xgboost
+SMOTE
+imbalanced-learn
+dill
 # -e .
